@@ -30,7 +30,7 @@ const Login = () => {
       const { email, password } = data;
       const user = { email, password };
 
-      const url = `http://localhost:5000/api/user/login`;
+      const url = `https://dream-inventory.herokuapp.com/api/user/login`;
       const res = await axios.post(url, user);
       const token = res?.data?.accessToken;
       if (res.data.status) {

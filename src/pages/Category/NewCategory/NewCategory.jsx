@@ -16,7 +16,7 @@ const NewCategory = () => {
     const { name, code } = data;
     const category = { name, code };
 
-    const url = `http://localhost:5000/api/category`;
+    const url = `https://dream-inventory.herokuapp.com/api/category`;
     const res = await axios.post(url, category);
     if (res.data.status) {
       toast.success("Category add successful");

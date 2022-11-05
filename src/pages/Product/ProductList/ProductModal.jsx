@@ -6,7 +6,7 @@ const ProductModal = ({ productShow, refetch, setProductShow }) => {
   const { name, price, quantity, id } = productShow;
 
   const handleDeleteProduct = async (id) => {
-    const url = `http://localhost:5000/api/product/${id}`;
+    const url = `https://dream-inventory.herokuapp.com/api/product/${id}`;
     const { data } = await axios.delete(url);
     if (data.status) {
       toast.success(`${name} Product delete successfully`);

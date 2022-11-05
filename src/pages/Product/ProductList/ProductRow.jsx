@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { HiEye } from "react-icons/hi";
 import { FaTrashAlt, FaEdit } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const ProductRow = ({ product, index, setProductShow }) => {
-  const { image, name, category, quantity, price } = product;
+  const { image, name, category, quantity, price, id } = product;
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -21,7 +24,7 @@ const ProductRow = ({ product, index, setProductShow }) => {
         <td> {quantity} </td>
         <td> {price} </td>
         <td className="text-center">
-          <button>
+          <button onClick={() => navigate(`/dashboard/product/${id}`)}>
             <HiEye className="text-primary" />
           </button>
           <button className="mx-10">
@@ -30,7 +33,7 @@ const ProductRow = ({ product, index, setProductShow }) => {
 
           <button>
             <label
-            className="cursor-pointer"
+              className="cursor-pointer"
               htmlFor="product-modal"
               onClick={() => setProductShow(product)}
             >

@@ -3,6 +3,7 @@ import CategoryList from "../pages/Category/CategoryList/CategoryList";
 import NewCategory from "../pages/Category/NewCategory/NewCategory";
 import AddProduct from "../pages/Product/AddProduct/AddProduct";
 import ProductList from "../pages/Product/ProductList/ProductList";
+import ProductShow from "../pages/Product/ProductShow/ProductShow";
 import AddPurchases from "../pages/Purchases/AddPurchases/AddPurchases";
 import PurchasesList from "../pages/Purchases/PurchasesList/PurchasesList";
 import NewSales from "../pages/Sales/NewSales/NewSales";
@@ -21,6 +22,7 @@ const routes = [
   { path: "category-list", Component: CategoryList },
   { path: "purchases-list", Component: PurchasesList },
   { path: "add-purchases", Component: AddPurchases },
+  { path: "product/:id", Component: ProductShow },
 ];
 
 export default routes;

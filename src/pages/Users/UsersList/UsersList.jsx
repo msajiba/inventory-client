@@ -10,7 +10,7 @@ const UsersList = () => {
 
   const { isLoading, error, data, refetch } = useQuery(
     "users",
-    async () => await axios.get(`http://localhost:5000/api/user`)
+    async () => await axios.get(`https://dream-inventory.herokuapp.com/api/user`)
   );
   if (isLoading) {
     return <Loader />;

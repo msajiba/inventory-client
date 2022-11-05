@@ -31,7 +31,7 @@ const AddProduct = () => {
         const img = res?.data?.data?.image?.url;
         const products = { name, category, quantity, price, img, sku };
         const productInfo = await axios.post(
-          "http://localhost:5000/api/product",
+          "https://dream-inventory.herokuapp.com/api/product",
           products
         );
         if (productInfo.data.status) {
@@ -80,8 +80,7 @@ const AddProduct = () => {
                     </option>
                     {categories?.data?.map(({ name }, index) => (
                       <option key={index} defaultValue={name}>
-                        {" "}
-                        {name}{" "}
+                        {name}
                       </option>
                     ))}
                   </select>

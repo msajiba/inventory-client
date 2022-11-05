@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 import Loader from "../pages/Shared/Loader";
 
 const useCategory = () => {
-  const url = `http://localhost:5000/api/category`;
+  const url = `https://dream-inventory.herokuapp.com/api/category`;
   const { isLoading, data, refetch } = useQuery(
     "demo",
     async () => await axios.get(url)

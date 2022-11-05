@@ -10,7 +10,7 @@ const UserModal = ({
   const { username, email, id } = userModalShow;
 
   const handlerDeleteUser = async (id) => {
-    const url = `http://localhost:5000/api/user/${id}`;
+    const url = `https://dream-inventory.herokuapp.com/api/user/${id}`;
 
     const { data } = await axios.delete(url);
     if (data.status) {

@@ -6,7 +6,7 @@ const CategoryModal = ({ category, setCategory, refetch }) => {
   const { name, code, id } = category;
 
   const deleteCategoryHandler = async (id) => {
-    const url = `http://localhost:5000/api/category/${id}`;
+    const url = `https://dream-inventory.herokuapp.com/api/category/${id}`;
     const { data } = await axios.delete(url);
     if (data.status) {
       toast.success(`${name} delete successfully`);

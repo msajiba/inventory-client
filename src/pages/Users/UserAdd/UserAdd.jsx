@@ -33,7 +33,7 @@ const UserAdd = () => {
         const img = res?.data?.data?.image?.url;
         const user = { username, role, email, password, img, mobile };
         const postInfo = await axios.post(
-          "http://localhost:5000/api/user",
+          "https://dream-inventory.herokuapp.com/api/user",
           user
         );
         if (postInfo.data.status) {

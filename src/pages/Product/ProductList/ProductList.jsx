@@ -7,15 +7,31 @@ import ProductModal from "./ProductModal";
 
 const ProductList = () => {
   const [productShow, setProductShow] = useState(null);
-  const url = "http://localhost:5000/api/product";
+  const [page, setPage] = useState(0);
+  const [size, setSize] = useState(10);
+
+  // const url = `https://dream-inventory.herokuapp.com/api/product?page=${page}&size=${size}`;
+  const url = `http://localhost:5000/api/product?page=${page}&size=${size}`;
+  console.log(url);
   const { isLoading, data, refetch } = useQuery(
-    "products",
+    ["products", page, size],
     async () => await axios.get(url)
   );
 
-  if (isLoading) {
+  const { isLoading: productLoading, data: productCount } = useQuery(
+    "productCount",
+    async () =>
+      await axios.get("http://localhost:5000/api/product/product-count")
+  );
+
+  if (isLoading || productLoading) {
     return <Loader />;
   }
+  const count = productCount?.data?.count;
+  const pages = Math.ceil(count / size);
+
+
+
 
   return (
     <div className="overflow-x-auto w-full">
@@ -52,6 +68,36 @@ const ProductList = () => {
           productShow={productShow}
         />
       )}
+
+      <div></div>
+
+      <div className="text-end pb-20">
+        <span> Show per page: </span>
+        <select
+          defaultValue="10"
+          className="border mx-2"
+          onChange={(e) => setSize(e.target.value)}
+        >
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
+
+        {[...Array(pages).keys()].map((number, index) => (
+          <button
+            key={index}
+            className={
+              page === number
+                ? "bg-red-500 px-2 btn btn-xs mx-1"
+                : " px-2 border btn btn-xs mx-1"
+            }
+            onClick={() => setPage(number)}
+          >
+            {number + 1}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
